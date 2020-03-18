@@ -1,0 +1,66 @@
+C:/Desktop/MIPS_CPUdesign/SC-CPU/ctrl_encode_def.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/ctrl_encode_def.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/RF.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/RF.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module RF
+
+Top level modules:
+	RF
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/TEST_MIPS.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/TEST_MIPS.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module Test_mips
+
+Top level modules:
+	Test_mips
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/EXT.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/EXT.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module EXT
+
+Top level modules:
+	EXT
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/NPC.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/NPC.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module NPC
+
+Top level modules:
+	NPC
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/Instr_mem.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/Instr_mem.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module Instr_mem
+
+Top level modules:
+	Instr_mem
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/alu.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/alu.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/mux.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/mux.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mux2
+-- Compiling module mux4
+-- Compiling module mux8
+-- Compiling module mux16
+
+Top level modules:
+	mux2
+	mux4
+	mux8
+	mux16
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SC-CPU/PC.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SC-CPU/PC.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module PC
+
+Top level modules:
+	PC
+
+} {} {}}
