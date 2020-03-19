@@ -45,6 +45,10 @@ begin
             begin
                 ALUop<=`ALU_ADDU;
             end
+            `AND_FUNCT:
+            begin
+                ALUop<=`ALU_AND;
+            end
             `SUB_FUNCT:
             begin
                 ALUop<=`ALU_SUB;
@@ -107,6 +111,39 @@ begin
             ALUSrc<=1;
             RegWrite<=1'b1;
             Ext<=`EXT_SIGNED;
+        end
+        `BEQ_OP:
+        begin
+            //Branch<=1'b1;
+            //Ext<=`EXT_SIGNED;
+            PCSrc<=`NPC_BRANCH;
+        end
+        `SW_OP:
+        begin
+            ALUop<=`ALU_ADD;
+            MemWrite<=1'b1;
+            ALUSrc<=1'b1;
+            Ext<=`EXT_SIGNED;
+        end
+        `LW_OP:
+        begin
+            RegDst<=1'b0;
+            MemRead<=1'b1;
+            MemtoReg<=1'b1;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+        end
+        `J_OP:
+        begin
+            //Jump<=1'b1;
+            //Ext=`EXT_SIGNED;
+            PCSrc<=`NPC_JUMP;
+        end
+        `JAL_OP:
+        begin
+            PCSrc<=`NPC_JAL;
         end
 
         endcase

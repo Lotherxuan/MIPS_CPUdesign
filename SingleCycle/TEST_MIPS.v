@@ -5,7 +5,7 @@ module Test;
 reg clk;
 reg rst;
 
-reg count;//TODO count变量是用于调试的
+reg [7:0]count;//TODO count变量是用于调试的
 MIPS mips(.clk(clk),.rst(rst));
 
 initial
@@ -22,7 +22,7 @@ begin
         clk<=~clk;
         rst<=0;
         count<=count+1;
-        if(count>=1)
+        if(count>=100)
         begin
         $finish;
         end

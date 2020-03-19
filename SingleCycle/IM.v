@@ -7,7 +7,7 @@ reg[31:0] Instrs[1023:0];
 
 initial
 begin
-    $readmemh("mipstestloop_sim.dat",Instrs,0);
+    $readmemh("../test_codes/mipstestloopjal_sim.dat",Instrs,0);
 end
 
 always@(addr)

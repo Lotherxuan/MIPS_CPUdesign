@@ -76,6 +76,7 @@
 `define NPC_PLUS4   2'b00
 `define NPC_BRANCH  2'b01
 `define NPC_JUMP    2'b10
+`define NPC_JAL     2'b11
 
 //Extend control signal
 `define EXT_ZERO    2'b01

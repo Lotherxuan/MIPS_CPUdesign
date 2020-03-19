@@ -8,7 +8,7 @@ input rst;
 //控制器相关
 wire RegDst;
 wire Jump;
-wire Branch;
+wire Branch;//TODO branch和jump好像都不需要？？
 wire MemRead;
 wire MemtoReg;
 wire[4:0] ALUop;
@@ -66,14 +66,14 @@ wire [31:0] NPC;
 wire [9:0] PCAddr;
 assign PCAddr= PC[11:2];
 
-NPC npc (.PC(PC),.NPCop(PCsrc),.IMM(IMM),.NPC(NPC));
+NPC npc (.PC(PC),.NPCop(PCsrc),.Zero(zero),.IMM(IMM),.Imm16(Imm16),.NPC(NPC));
 
 PC pc(.clk(clk),.rst(rst),.NPC(NPC),.PC(PC));
 
 IM im(.addr(PCAddr),.instr(AnInsturction));
 
 assign RF_wd=(MemtoReg===1)?DM_out:ALU_Result;
-assign RF_rd=(RegDst===0)?rd:rt;
+assign RF_rd=(RegDst===0)?rt:rd;
 RF rf(.clk(clk),.rst(rst),.RFWr(RegWrite),.A1(rs),.A2(rt),.A3(RF_rd),.WD(RF_wd),.RD1(RD1),.RD2(RD2));
 
 EXT ext(.Imm16(Imm16),.EXTOp(Ext),.Imm32(Imm32));

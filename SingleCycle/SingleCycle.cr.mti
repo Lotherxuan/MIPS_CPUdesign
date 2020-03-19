@@ -15,6 +15,20 @@ Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
 Top level modules:
 	MEM
 
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/TEST_MIPS.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/TEST_MIPS.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module Test
+
+Top level modules:
+	Test
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module MIPS
+
+Top level modules:
+	MIPS
+
 } {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v
 Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
 -- Compiling module PC
