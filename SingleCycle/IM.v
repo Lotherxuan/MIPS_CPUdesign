@@ -1,6 +1,6 @@
 module IM(addr,instr);
 
-input [11:2] addr;
+input [9:0] addr;
 output reg[31:0] instr;
 
 reg[31:0] Instrs[1023:0];

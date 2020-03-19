@@ -17,6 +17,9 @@ wire[4:0] ALUop;
 wire MemWrite;
 wire ALUSrc;
 wire RegWrite;
+
+wire [1:0]NPCop;
+
 wire [1:0] Ext;
 
 //算术运算相关
@@ -56,7 +59,7 @@ wire [4:0] RF_rd;
 assign RF_rd=(RegDst===0)?rd:rt;
 
 //符号扩展相关
-wire [31:0] Imm32;
+wire [31:0] Imm32;//TODO：是修改成31：0还是25：0？
 
 //数据内存相关
 wire [31:0] DM_out;
@@ -72,8 +75,9 @@ assign RF_WD=(MemtoReg===1)?DM_out:ALU_Result;
 wire [31:0] AluMux_Result;
 assign AluMux_Result=(ALUSrc===0)? RD2:Imm32;
 
+assign `NPCop=`NPC_PLUS4;
 //指令计数器模块
-NPC npc (.PC(PC),.NPCop(NPCop));
+NPC npc (.PC(PC),.NPCop(NPCop),.IMM(Imm32),.NPC(NPC));
 
 PC pc(.clk(clk),.rst(rst),.NPC(NPC),.PC(PC));
 

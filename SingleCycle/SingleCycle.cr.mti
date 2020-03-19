@@ -1,0 +1,73 @@
+C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module IM
+
+Top level modules:
+	IM
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module MEM
+
+Top level modules:
+	MEM
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module PC
+
+Top level modules:
+	PC
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module RF
+
+Top level modules:
+	RF
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module CONTROL
+
+Top level modules:
+	CONTROL
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module NPC
+
+Top level modules:
+	NPC
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/EXT.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/EXT.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module EXT
+
+Top level modules:
+	EXT
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/ALU.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/ALU.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module Mux2
+-- Compiling module Mux4
+-- Compiling module Mux8
+-- Compiling module mux16
+
+Top level modules:
+	Mux2
+	Mux4
+	Mux8
+	mux16
+
+} {} {}}
