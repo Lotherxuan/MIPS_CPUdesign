@@ -36,13 +36,6 @@ Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
 Top level modules:
 	PC
 
-} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v
-Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
--- Compiling module RF
-
-Top level modules:
-	RF
-
 } {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v
 Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
 -- Compiling module CONTROL

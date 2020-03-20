@@ -34,9 +34,11 @@ wire [31:0] Imm32;
 //寄存器相关
 wire [31:0] RD1;
 wire [31:0] RD2;//从RF中读出来的数据
-wire [31:0] RF_wd;//等待写入RF的数据
+wire [31:0] RF_wd0;//等待写入RF的数据
+wire [31:0] RF_wd;
 
 //目标寄存器相关
+wire [4:0] RF_rd0;
 wire [4:0] RF_rd;
 
 //指令本体
@@ -72,8 +74,11 @@ PC pc(.clk(clk),.rst(rst),.NPC(NPC),.PC(PC));
 
 IM im(.addr(PCAddr),.instr(AnInsturction));
 
-assign RF_wd=(MemtoReg===1)?DM_out:ALU_Result;
-assign RF_rd=(RegDst===0)?rt:rd;
+assign RF_wd0=(MemtoReg===1)?DM_out:ALU_Result;
+assign RF_wd=(PCsrc===`NPC_JAL)?(PC+4):RF_wd0;
+assign RF_rd0=(RegDst===0)?rt:rd;
+assign RF_rd=(PCsrc===`NPC_JAL)?5'd31:RF_rd0;
+
 RF rf(.clk(clk),.rst(rst),.RFWr(RegWrite),.A1(rs),.A2(rt),.A3(RF_rd),.WD(RF_wd),.RD1(RD1),.RD2(RD2));
 
 EXT ext(.Imm16(Imm16),.EXTOp(Ext),.Imm32(Imm32));

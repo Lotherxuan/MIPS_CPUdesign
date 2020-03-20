@@ -143,6 +143,7 @@ begin
         end
         `JAL_OP:
         begin
+            RegWrite<=1'b1;
             PCSrc<=`NPC_JAL;
         end
 

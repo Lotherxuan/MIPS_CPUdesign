@@ -9,10 +9,10 @@ z2
 cModel Technology
 dC:/WHU/modelsim/win64
 T_opt
-!s110 1584622104
-VN5zFE5UlfKecX7G0F8joo3
+!s110 1584689381
+Ve@15TQ41aFN_4KflPXd[42
 04 4 4 work Test fast 0
-=1-2816a8676be1-5e736a18-22e-4dfc
+=1-2816a8676be1-5e7470e5-2b7-4fc0
 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
 OL;O;10.4;61
@@ -59,7 +59,7 @@ R6
 R7
 n@alu
 vALU
-Z8 !s110 1584622100
+Z8 !s110 1584689357
 !i10b 1
 !s100 Mi@mUmLA2okdl5GS<624W2
 IZ35VL3IY@IO@:YhFY]AFJ1
@@ -73,7 +73,7 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.753000
+!s108 1584689357.277000
 R5
 R6
 !i113 0
@@ -82,11 +82,11 @@ n@a@l@u
 vCONTROL
 R8
 !i10b 1
-!s100 Co6zmbN029ET?iD<>e3OG3
-IMo9P29C`QnB2fob<I`aIb0
+!s100 DHYQJ7RLHmL?5Oo^N7J@02
+IJFz;JIh5QbceP<iUY6=?o3
 R0
 R1
-w1584622060
+w1584689334
 8C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v
 FC:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v
 L0 2
@@ -94,14 +94,14 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.934000
+!s108 1584689357.386000
 !s107 ENCODE.v|C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/CONTROL.v|
 !i113 0
 R7
 n@c@o@n@t@r@o@l
 vEXT
-Z9 !s110 1584622101
+R8
 !i10b 1
 !s100 Scz535Ek63GUOJEi`fdSC0
 I08>O^N^:W7o8?obKLo5`Y2
@@ -115,20 +115,20 @@ R4
 r1
 !s85 0
 31
-!s108 1584622101.250000
+!s108 1584689357.604000
 !s107 ENCODE.v|C:/Desktop/MIPS_CPUdesign/SingleCycle/EXT.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/EXT.v|
 !i113 0
 R7
 n@e@x@t
 vIM
-R9
+R8
 !i10b 1
-!s100 ^UD3BFdMCZ82`aN>Ukem01
-I8OE3Q6MJ3CiObBkd7h8f>2
+!s100 b6HKR6aED@S9>YCRzcU3N2
+I]V<][oh0=B:PiiX85gHD?1
 R0
 R1
-w1584530451
+w1584623191
 8C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v
 FC:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v
 L0 1
@@ -136,14 +136,14 @@ R4
 r1
 !s85 0
 31
-!s108 1584622101.429000
+!s108 1584689357.721000
 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v|
 !i113 0
 R7
 n@i@m
 vMEM
-R9
+R8
 !i10b 1
 !s100 C_NW[HRPLCH`XQGEnZWdV3
 IFAz@734mZ3BLO7PF<Llz:2
@@ -157,20 +157,20 @@ R4
 r1
 !s85 0
 31
-!s108 1584622101.614000
+!s108 1584689357.834000
 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v|
 !i113 0
 R7
 n@m@e@m
 vMIPS
-R9
+R8
 !i10b 1
-!s100 h44c63ne`@IB<9^1RmLZK0
-IhgE0T9b3bCQNFc[6`aT4>0
+!s100 a2EA8HEZWVl4W=aQ55D>`0
+IMZXI:EL4KbXRZDblR]BGg2
 R0
 R1
-w1584615230
+w1584688136
 8C:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v
 FC:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v
 L0 3
@@ -178,103 +178,103 @@ R4
 r1
 !s85 0
 31
-!s108 1584622101.856000
+!s108 1584689357.943000
 !s107 ENCODE.v|C:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/MIPS.v|
 !i113 0
 R7
 n@m@i@p@s
 vmux16
-Z10 !s110 1584622099
+Z9 !s110 1584689356
 !i10b 1
 !s100 _kD]@DiV[:SJ[]_:lBKV[0
 ILa0G;aB5=Ne@TMGKhRZJ40
 R0
 R1
-Z11 w1584185696
-Z12 8C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
-Z13 FC:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
+Z10 w1584185696
+Z11 8C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
+Z12 FC:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
 L0 71
 R4
 r1
 !s85 0
 31
-Z14 !s108 1584622099.832000
-Z15 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v|
-Z16 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v|
+Z13 !s108 1584689356.699000
+Z14 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v|
+Z15 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v|
 !i113 0
 R7
 vMux2
-R10
+R9
 !i10b 1
 !s100 l:8l3l9OHg8VNfRSmz`=H2
 I;_Vmz?`jzmUid_TXOPPX<0
 R0
 R1
+R10
 R11
 R12
-R13
 L0 2
 R4
 r1
 !s85 0
 31
+R13
 R14
 R15
-R16
 !i113 0
 R7
 n@mux2
 vMux4
-R10
+R9
 !i10b 1
 !s100 YQ[dBM?edg2SEJnYE3<_M0
 I94e5C9n>RX_<0ghz3N;^70
 R0
 R1
+R10
 R11
 R12
-R13
 L0 15
 R4
 r1
 !s85 0
 31
+R13
 R14
 R15
-R16
 !i113 0
 R7
 n@mux4
 vMux8
-R10
+R9
 !i10b 1
 !s100 Hfl]Y;@2b4l4R7WQL16o30
 I1@JjNiIAe23:TJC:dGDRh0
 R0
 R1
+R10
 R11
 R12
-R13
 L0 40
 R4
 r1
 !s85 0
 31
+R13
 R14
 R15
-R16
 !i113 0
 R7
 n@mux8
 vNPC
-R8
+R9
 !i10b 1
-!s100 >@S8gO9`aJW4bO3jV=NZ62
-I7dSRe6j54Y7Yh[SXoG5Tg1
+!s100 BV=;2``h2=1B0Sn6D]XzQ1
+IXN90ROeiMDYoCz1I5NN]U3
 R0
 R1
-w1584615627
+w1584629297
 8C:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v
 FC:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v
 L0 3
@@ -282,14 +282,14 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.018000
+!s108 1584689356.826000
 !s107 ENCODE.v|C:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/NPC.v|
 !i113 0
 R7
 n@n@p@c
 vPC
-R8
+R9
 !i10b 1
 !s100 k;DQFfoC1m68Bdig@En=B3
 IaccizlGE7_:ABAJm[lPim3
@@ -303,20 +303,20 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.187000
+!s108 1584689356.943000
 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/PC.v|
 !i113 0
 R7
 n@p@c
 vRF
-R8
+!s110 1584689376
 !i10b 1
-!s100 nco:S<11CnZBVCIL^1Yde1
-IJJ]n3`>EbSf3_6REe<k3M0
+!s100 ZNHd^J;?n][KRI38IHCl30
+IHGf0M<BQ<NVh:`?^:>5BD1
 R0
 R1
-w1584612372
+w1584689372
 8C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v
 FC:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v
 L0 2
@@ -324,7 +324,7 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.396000
+!s108 1584689376.697000
 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/RF.v|
 !i113 0
@@ -345,7 +345,7 @@ R4
 r1
 !s85 0
 31
-!s108 1584622100.593000
+!s108 1584689357.162000
 !s107 C:/Desktop/MIPS_CPUdesign/SingleCycle/TEST_MIPS.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Desktop/MIPS_CPUdesign/SingleCycle/TEST_MIPS.v|
 !i113 0
