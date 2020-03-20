@@ -1,5 +1,5 @@
 `include "ENCODE.v"
-module CONTROL(Op,Func,RegDst,Jump,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite,Ext,PCSrc);
+module CONTROL(Op,Func,RegDst,Jump,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite,Shamt,Ext,PCSrc);
 //理论上来说PCSrc是来间接信号，但在现有设计中PCSrc由CONTROL产生
 
 input [5:0] Op;
@@ -12,10 +12,11 @@ output reg MemRead;//读存储器
 output reg MemtoReg;//为1时写入的数据来自数据存储器,不为0时来自ALU计算的结果
 output reg[4:0] ALUop;
 output reg MemWrite;//为1时数据存储器写使能有效
-output reg ALUSrc;//为1时操作数来自符号扩展，为0时来自第二个reg
+output reg ALUSrc;//为1时ALU的第二个操作数来自符号扩展，为0时来自rt 默认为0
 output reg RegWrite;//为1时写入register有效
+output reg Shamt;//为1时ALU的第一个操作数来自shamt字段
 output reg[1:0] Ext;//决定符号扩展的类型
-output reg[1:0] PCSrc;
+output reg[2:0] PCSrc;
 
 always@(*)
 begin
@@ -28,6 +29,7 @@ begin
     MemWrite<=1'b0;
     ALUSrc<=1'b0;
     RegWrite<=1'b0;
+    Shamt<=1'b0;
     Ext<=`EXT_ZERO;
     PCSrc<=`NPC_PLUS4;
 
@@ -80,10 +82,14 @@ begin
             `SLL_FUNCT:
             begin
                 ALUop<=`ALU_SLL;
+                RegWrite<=1'b1;
+                Shamt<=1'b1;
             end
             `SRL_FUNCT:
             begin
                 ALUop<=`ALU_SRL;
+                RegWrite<=1'b1;
+                Shamt<=1'b1;
             end
             `SRA_FUNCT:
             begin
@@ -101,6 +107,15 @@ begin
             begin
                 ALUop<=`ALU_SRA;
             end
+            `JALR_FUNCT:
+            begin
+                PCSrc<=`NPC_JALR;
+            end
+            `JR_FUNCT:
+            begin
+                PCSrc<=`NPC_JR;
+                RegWrite<=1'b0;
+            end
         //TODO:修改移位操作中目标寄存器
             endcase
         end
@@ -112,11 +127,47 @@ begin
             RegWrite<=1'b1;
             Ext<=`EXT_SIGNED;
         end
+        `ORI_OP:
+        begin
+            RegDst<=1'b0;
+            ALUop<=`ALU_OR;
+            ALUSrc<=1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+        end
+        `ANDI_OP:
+        begin
+            RegDst<=1'b0;
+            ALUop<=`ALU_AND;
+            ALUSrc<=1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+        end
+        `LUI_OP:
+        begin
+            RegDst<=1'b0;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_HIGHPOS;
+        end
+        `SLTI_OP:
+        begin
+            RegDst<=1'b0;
+            ALUop<=`ALU_SLT;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+        end
         `BEQ_OP:
         begin
             //Branch<=1'b1;
             //Ext<=`EXT_SIGNED;
             PCSrc<=`NPC_BRANCH;
+        end
+        `BNE_OP:
+        begin
+            PCSrc<=`NPC_BNE;
         end
         `SW_OP:
         begin
@@ -137,8 +188,6 @@ begin
         end
         `J_OP:
         begin
-            //Jump<=1'b1;
-            //Ext=`EXT_SIGNED;
             PCSrc<=`NPC_JUMP;
         end
         `JAL_OP:

@@ -8,21 +8,23 @@ input rst;
 //控制器相关
 wire RegDst;
 wire Jump;
-wire Branch;//TODO branch和jump好像都不需要？？
+wire Branch;//在本cpu设计中所有地址相关操作都由PCsrc控制，branch和jump都为冗余信号，可以去掉
 wire MemRead;
 wire MemtoReg;
 wire[4:0] ALUop;
 wire MemWrite;
 wire ALUSrc;
 wire RegWrite;
+wire Shamt;
 wire[1:0] Ext;
-wire[1:0] PCsrc;
+wire[2:0] PCsrc;
 
 //数据内存相关
 wire [31:0] DM_out;
 wire [9:0] DM_addr;
 
 //算术运算相关
+wire [31:0] Alu1;//第一个操作数
 wire [31:0] AluMux_Result;
 //算术运算相关
 wire zero;
@@ -52,6 +54,7 @@ wire [4:0] rt;
 wire [4:0] rd;
 wire [15:0] Imm16;
 wire [25:0] IMM;
+wire [5:0] shamt;
 
 assign Op=AnInsturction[31:26];
 assign Funct=AnInsturction[5:0];
@@ -60,6 +63,7 @@ assign rt=AnInsturction[20:16];
 assign rd=AnInsturction[15:11];
 assign Imm16=AnInsturction[15:0];
 assign IMM=AnInsturction[25:0];
+assign shamt=AnInsturction[10:6];
 
 
 //指令地址相关
@@ -68,14 +72,14 @@ wire [31:0] NPC;
 wire [9:0] PCAddr;
 assign PCAddr= PC[11:2];
 
-NPC npc (.PC(PC),.NPCop(PCsrc),.Zero(zero),.IMM(IMM),.Imm16(Imm16),.NPC(NPC));
+NPC npc (.PC(PC),.NPCop(PCsrc),.Zero(zero),.IMM(IMM),.Imm16(Imm16),.rs(RD1),.NPC(NPC));
 
 PC pc(.clk(clk),.rst(rst),.NPC(NPC),.PC(PC));
 
 IM im(.addr(PCAddr),.instr(AnInsturction));
 
 assign RF_wd0=(MemtoReg===1)?DM_out:ALU_Result;
-assign RF_wd=(PCsrc===`NPC_JAL)?(PC+4):RF_wd0;
+assign RF_wd=((PCsrc===`NPC_JAL)||(PCsrc==`NPC_JALR))?(PC+4):RF_wd0;
 assign RF_rd0=(RegDst===0)?rt:rd;
 assign RF_rd=(PCsrc===`NPC_JAL)?5'd31:RF_rd0;
 
@@ -84,11 +88,12 @@ RF rf(.clk(clk),.rst(rst),.RFWr(RegWrite),.A1(rs),.A2(rt),.A3(RF_rd),.WD(RF_wd),
 EXT ext(.Imm16(Imm16),.EXTOp(Ext),.Imm32(Imm32));
 
 assign AluMux_Result=(ALUSrc===0)? RD2:Imm32;
-ALU alu(.A(RD1),.B(AluMux_Result),.ALUOp(ALUop),.C(ALU_Result),.Zero(zero));
+assign Alu1=(Shamt===1)?{26'd0,shamt[5:0]}:RD1;
+ALU alu(.A(Alu1),.B(AluMux_Result),.ALUOp(ALUop),.C(ALU_Result),.Zero(zero));
 
 assign DM_addr=ALU_Result[11:2];
 MEM mem(.clk(clk),.rst(rst),.input_address(DM_addr),.input_data(RD2),.Wr(MemWrite),.output_data(DM_out));
 
-CONTROL control(.Op(Op),.Func(Funct),.RegDst(RegDst),.Jump(Jump),.Branch(Branch),.MemRead(MemRead),.MemtoReg(MemtoReg),.ALUop(ALUop),.MemWrite(MemWrite),.ALUSrc(ALUSrc),.RegWrite(RegWrite),.Ext(Ext),.PCSrc(PCsrc));
+CONTROL control(.Op(Op),.Func(Funct),.RegDst(RegDst),.Jump(Jump),.Branch(Branch),.MemRead(MemRead),.MemtoReg(MemtoReg),.ALUop(ALUop),.MemWrite(MemWrite),.ALUSrc(ALUSrc),.RegWrite(RegWrite),.Shamt(Shamt),.Ext(Ext),.PCSrc(PCsrc));
 
 endmodule

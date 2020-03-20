@@ -73,10 +73,13 @@
 `define ALU_SRA   5'b10011
 
 //NPC control signal
-`define NPC_PLUS4   2'b00
-`define NPC_BRANCH  2'b01
-`define NPC_JUMP    2'b10
-`define NPC_JAL     2'b11
+`define NPC_PLUS4   3'b000
+`define NPC_BRANCH  3'b001
+`define NPC_JUMP    3'b010
+`define NPC_JAL     3'b011
+`define NPC_JALR    3'b100
+`define NPC_BNE     3'b101
+`define NPC_JR      3'b110
 
 //Extend control signal
 `define EXT_ZERO    2'b01

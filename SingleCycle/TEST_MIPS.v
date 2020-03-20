@@ -5,7 +5,7 @@ module Test;
 reg clk;
 reg rst;
 
-reg [7:0]count;//TODO count变量是用于调试的
+reg [7:0]count;//TODO count变量是用于调试
 MIPS mips(.clk(clk),.rst(rst));
 
 initial
