@@ -116,7 +116,7 @@ begin
                 PCSrc<=`NPC_JR;
                 RegWrite<=1'b0;
             end
-        //TODO:修改移位操作中目标寄存器
+        //
             endcase
         end
         `ADDI_OP:
@@ -161,8 +161,6 @@ begin
         end
         `BEQ_OP:
         begin
-            //Branch<=1'b1;
-            //Ext<=`EXT_SIGNED;
             PCSrc<=`NPC_BRANCH;
         end
         `BNE_OP:
