@@ -25,8 +25,11 @@ module ALU(A, B, ALUOp, C, Zero);
           `ALU_SLT:C=A<B?1:0;
           `ALU_SLTU:C=$unsigned(A)<$unsigned(B)?1:0;
           `ALU_SLL:C=B << A;
+          `ALU_SLLV:C=B << A[4:0];
           `ALU_SRL:C=B >> A;
-          `ALU_SRA:C=B >>> A;
+          `ALU_SRLV:C=B >> A[4:0];
+          `ALU_SRA:C=B >>> A; 
+          `ALU_SRAV:C=B >>> A[4:0]; 
           //其中>>>是verilog原生运算符，表示算术右移
 
           default:   C = A;                          // Undefined

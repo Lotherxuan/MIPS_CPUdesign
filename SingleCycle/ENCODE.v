@@ -71,6 +71,9 @@
 `define ALU_SLL   5'b10001
 `define ALU_SRL   5'b10010
 `define ALU_SRA   5'b10011
+`define ALU_SLLV  5'b10100
+`define ALU_SRLV  5'b10101
+`define ALU_SRAV  5'b10110
 
 //NPC control signal
 `define NPC_PLUS4   3'b000
@@ -85,3 +88,14 @@
 `define EXT_ZERO    2'b01
 `define EXT_SIGNED  2'b00
 `define EXT_HIGHPOS 2'b10
+
+//MEM control signal
+`define MEM_NOP     4'b0000
+`define MEM_LW      4'b0001
+`define MEM_SW      4'b0010
+`define MEM_LB      4'b0011
+`define MEM_LH      4'b0100
+`define MEM_LBU     4'b0101
+`define MEM_LHU     4'b0110
+`define MEM_SB      4'b0111
+`define MEM_SH      4'b1000

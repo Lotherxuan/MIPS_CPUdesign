@@ -18,10 +18,11 @@ wire RegWrite;
 wire Shamt;
 wire[1:0] Ext;
 wire[2:0] PCsrc;
+wire[3:0] MemControl;
 
 //数据内存相关
 wire [31:0] DM_out;
-wire [9:0] DM_addr;
+wire [31:0] DM_addr;//送入32位ALU运算结果，具体的地址解析在MEM中完成
 
 //算术运算相关
 wire [31:0] Alu1;//第一个操作数
@@ -44,7 +45,7 @@ wire [4:0] RF_rd0;
 wire [4:0] RF_rd;
 
 //指令本体
-wire [31:0]AnInsturction;
+wire [31:0]Instruction;
 
 //拆分指令
 wire [5:0] Op;
@@ -56,14 +57,14 @@ wire [15:0] Imm16;
 wire [25:0] IMM;
 wire [5:0] shamt;
 
-assign Op=AnInsturction[31:26];
-assign Funct=AnInsturction[5:0];
-assign rs=AnInsturction[25:21];
-assign rt=AnInsturction[20:16];
-assign rd=AnInsturction[15:11];
-assign Imm16=AnInsturction[15:0];
-assign IMM=AnInsturction[25:0];
-assign shamt=AnInsturction[10:6];
+assign Op=Instruction[31:26];
+assign Funct=Instruction[5:0];
+assign rs=Instruction[25:21];
+assign rt=Instruction[20:16];
+assign rd=Instruction[15:11];
+assign Imm16=Instruction[15:0];
+assign IMM=Instruction[25:0];
+assign shamt=Instruction[10:6];
 
 
 //指令地址相关
@@ -76,7 +77,7 @@ NPC npc (.PC(PC),.NPCop(PCsrc),.Zero(zero),.IMM(IMM),.Imm16(Imm16),.rs(RD1),.NPC
 
 PC pc(.clk(clk),.rst(rst),.NPC(NPC),.PC(PC));
 
-IM im(.addr(PCAddr),.instr(AnInsturction));
+IM im(.addr(PCAddr),.instr(Instruction));
 
 assign RF_wd0=(MemtoReg===1)?DM_out:ALU_Result;
 assign RF_wd=((PCsrc===`NPC_JAL)||(PCsrc==`NPC_JALR))?(PC+4):RF_wd0;
@@ -91,9 +92,9 @@ assign AluMux_Result=(ALUSrc===0)? RD2:Imm32;
 assign Alu1=(Shamt===1)?{26'd0,shamt[5:0]}:RD1;
 ALU alu(.A(Alu1),.B(AluMux_Result),.ALUOp(ALUop),.C(ALU_Result),.Zero(zero));
 
-assign DM_addr=ALU_Result[11:2];
-MEM mem(.clk(clk),.rst(rst),.input_address(DM_addr),.input_data(RD2),.Wr(MemWrite),.output_data(DM_out));
+assign DM_addr=ALU_Result;
+MEM mem(.clk(clk),.rst(rst),.input_address(DM_addr),.input_data(RD2),.Wr(MemWrite),.MemControl(MemControl),.output_data(DM_out));
 
-CONTROL control(.Op(Op),.Func(Funct),.RegDst(RegDst),.Jump(Jump),.Branch(Branch),.MemRead(MemRead),.MemtoReg(MemtoReg),.ALUop(ALUop),.MemWrite(MemWrite),.ALUSrc(ALUSrc),.RegWrite(RegWrite),.Shamt(Shamt),.Ext(Ext),.PCSrc(PCsrc));
+CONTROL control(.Op(Op),.Func(Funct),.RegDst(RegDst),.Jump(Jump),.Branch(Branch),.MemRead(MemRead),.MemtoReg(MemtoReg),.ALUop(ALUop),.MemWrite(MemWrite),.ALUSrc(ALUSrc),.RegWrite(RegWrite),.Shamt(Shamt),.Ext(Ext),.PCSrc(PCsrc),.MemControl(MemControl));
 
 endmodule

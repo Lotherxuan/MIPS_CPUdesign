@@ -1,5 +1,5 @@
 `include "ENCODE.v"
-module CONTROL(Op,Func,RegDst,Jump,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite,Shamt,Ext,PCSrc);
+module CONTROL(Op,Func,RegDst,Jump,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite,Shamt,Ext,PCSrc,MemControl);
 //理论上来说PCSrc是来间接信号，但在现有设计中PCSrc由CONTROL产生
 
 input [5:0] Op;
@@ -17,6 +17,7 @@ output reg RegWrite;//为1时写入register有效
 output reg Shamt;//为1时ALU的第一个操作数来自shamt字段
 output reg[1:0] Ext;//决定符号扩展的类型
 output reg[2:0] PCSrc;
+output reg[3:0] MemControl;
 
 always@(*)
 begin
@@ -32,6 +33,7 @@ begin
     Shamt<=1'b0;
     Ext<=`EXT_ZERO;
     PCSrc<=`NPC_PLUS4;
+    MemControl<=`MEM_NOP;
 
     case(Op)
         `R_OP:
@@ -82,30 +84,29 @@ begin
             `SLL_FUNCT:
             begin
                 ALUop<=`ALU_SLL;
-                RegWrite<=1'b1;
                 Shamt<=1'b1;
             end
             `SRL_FUNCT:
             begin
                 ALUop<=`ALU_SRL;
-                RegWrite<=1'b1;
                 Shamt<=1'b1;
             end
             `SRA_FUNCT:
             begin
                 ALUop<=`ALU_SRA;
+                Shamt<=1'b1;
             end
             `SLLV_FUNCT:
             begin
-                ALUop<=`ALU_SLL;
+                ALUop<=`ALU_SLLV;
             end
             `SRLV_FUNCT:
             begin
-                ALUop<=`ALU_SRL;
+                ALUop<=`ALU_SRLV;
             end
             `SRAV_FUNCT:
             begin
-                ALUop<=`ALU_SRA;
+                ALUop<=`ALU_SRAV;
             end
             `JALR_FUNCT:
             begin
@@ -116,7 +117,6 @@ begin
                 PCSrc<=`NPC_JR;
                 RegWrite<=1'b0;
             end
-        //
             endcase
         end
         `ADDI_OP:
@@ -173,6 +173,23 @@ begin
             MemWrite<=1'b1;
             ALUSrc<=1'b1;
             Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_SW;
+        end
+        `SB_OP:
+        begin
+            ALUop<=`ALU_ADD;
+            MemWrite<=1'b1;
+            ALUSrc<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_SB;
+        end
+        `SH_OP:
+        begin
+            ALUop<=`ALU_ADD;
+            MemWrite<=1'b1;
+            ALUSrc<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_SH;
         end
         `LW_OP:
         begin
@@ -183,6 +200,51 @@ begin
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
             Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_LW;
+        end
+        `LB_OP:
+        begin
+            RegDst<=1'b0;
+            MemRead<=1'b1;
+            MemtoReg<=1'b1;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_LB;
+        end
+        `LH_OP:
+        begin
+            RegDst<=1'b0;
+            MemRead<=1'b1;
+            MemtoReg<=1'b1;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_LH;
+        end
+        `LBU_OP:
+        begin
+            RegDst<=1'b0;
+            MemRead<=1'b1;
+            MemtoReg<=1'b1;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_LBU;
+        end
+        `LHU_OP:
+        begin
+            RegDst<=1'b0;
+            MemRead<=1'b1;
+            MemtoReg<=1'b1;
+            ALUop<=`ALU_ADD;
+            ALUSrc<=1'b1;
+            RegWrite<=1'b1;
+            Ext<=`EXT_SIGNED;
+            MemControl<=`MEM_LHU;
         end
         `J_OP:
         begin
