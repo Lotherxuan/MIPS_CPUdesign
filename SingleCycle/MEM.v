@@ -18,8 +18,8 @@ integer i;
 
 always@(*)
 begin
-    word_addr<=input_address[11:2];
-    byte_addr<=input_address[1:0];
+    word_addr=input_address[11:2];
+    byte_addr=input_address[1:0];
     word=data_memory[word_addr[9:0]];
     case(MemControl)
         `MEM_LW:

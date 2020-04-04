@@ -5,11 +5,11 @@ module CONTROL(Op,Func,RegDst,Jump,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc
 input [5:0] Op;
 input [5:0] Func;
 
-output reg RegDst;//写寄存器时的目标寄存器，为1时时rd,为0时时rt
+output reg[1:0] RegDst;//写寄存器时的目标寄存器，为01时写rd,为00时写rt,为10时写第31号寄存器
 output reg Jump;//跳转指令
 output reg Branch;//分支指令
 output reg MemRead;//读存储器
-output reg MemtoReg;//为1时写入的数据来自数据存储器,不为0时来自ALU计算的结果
+output reg[1:0] MemtoReg;//为01时写入的数据来自数据存储器,为00时来自ALU计算的结果,为10时来自PC+4
 output reg[4:0] ALUop;
 output reg MemWrite;//为1时数据存储器写使能有效
 output reg ALUSrc;//为1时ALU的第二个操作数来自符号扩展，为0时来自rt 默认为0
@@ -21,11 +21,11 @@ output reg[3:0] MemControl;
 
 always@(*)
 begin
-    RegDst<=1'b1;
+    RegDst<=2'b01;
     Jump<=1'b0;
     Branch<=1'b0;
     MemRead<=1'b0;
-    MemtoReg<=1'b0;
+    MemtoReg<=2'b00;
     ALUop<=`ALU_NOP;
     MemWrite<=1'b0;
     ALUSrc<=1'b0;
@@ -38,7 +38,7 @@ begin
     case(Op)
         `R_OP:
         begin
-            RegDst<=1'b1;
+            RegDst<=2'b01;
             RegWrite<=1'b1;
             case(Func)
             `ADD_FUNCT:
@@ -110,6 +110,7 @@ begin
             end
             `JALR_FUNCT:
             begin
+                MemtoReg<=2'b10;
                 PCSrc<=`NPC_JALR;
             end
             `JR_FUNCT:
@@ -121,7 +122,7 @@ begin
         end
         `ADDI_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             ALUop<=`ALU_ADD;
             ALUSrc<=1;
             RegWrite<=1'b1;
@@ -129,7 +130,7 @@ begin
         end
         `ORI_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             ALUop<=`ALU_OR;
             ALUSrc<=1;
             RegWrite<=1'b1;
@@ -137,7 +138,7 @@ begin
         end
         `ANDI_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             ALUop<=`ALU_AND;
             ALUSrc<=1;
             RegWrite<=1'b1;
@@ -145,7 +146,7 @@ begin
         end
         `LUI_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -153,7 +154,7 @@ begin
         end
         `SLTI_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             ALUop<=`ALU_SLT;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -193,9 +194,9 @@ begin
         end
         `LW_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             MemRead<=1'b1;
-            MemtoReg<=1'b1;
+            MemtoReg<=2'b01;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -204,9 +205,9 @@ begin
         end
         `LB_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             MemRead<=1'b1;
-            MemtoReg<=1'b1;
+            MemtoReg<=2'b01;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -215,9 +216,9 @@ begin
         end
         `LH_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             MemRead<=1'b1;
-            MemtoReg<=1'b1;
+            MemtoReg<=2'b01;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -226,9 +227,9 @@ begin
         end
         `LBU_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             MemRead<=1'b1;
-            MemtoReg<=1'b1;
+            MemtoReg<=2'b01;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -237,9 +238,9 @@ begin
         end
         `LHU_OP:
         begin
-            RegDst<=1'b0;
+            RegDst<=2'b00;
             MemRead<=1'b1;
-            MemtoReg<=1'b1;
+            MemtoReg<=2'b01;
             ALUop<=`ALU_ADD;
             ALUSrc<=1'b1;
             RegWrite<=1'b1;
@@ -252,6 +253,8 @@ begin
         end
         `JAL_OP:
         begin
+            RegDst<=2'b10;
+            MemtoReg<=2'b10;
             RegWrite<=1'b1;
             PCSrc<=`NPC_JAL;
         end

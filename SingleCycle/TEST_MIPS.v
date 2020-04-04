@@ -21,6 +21,8 @@ begin
         #5
         clk<=~clk;
         rst<=0;
+        #5
+        clk<=~clk;
         count<=count+1;
         if(count>=100)
         begin
