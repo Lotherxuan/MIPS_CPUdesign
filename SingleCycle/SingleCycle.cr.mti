@@ -1,4 +1,11 @@
-C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v
+C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/IM.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module IM
+
+Top level modules:
+	IM
+
+} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/ENCODE.v
 Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
 
 } {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/MEM.v
@@ -59,20 +66,11 @@ Top level modules:
 
 } {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/MUX.v
 Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
--- Compiling module MUX2_32
--- Compiling module MUX4_32
--- Compiling module MUX4_5
+-- Compiling module MUX2
+-- Compiling module MUX4
 
 Top level modules:
-	MUX2_32
-	MUX4_32
-	MUX4_5
-
-} {} {}} C:/Desktop/MIPS_CPUdesign/SingleCycle/ALU.v {1 {vlog -work work -vopt -stats=none C:/Desktop/MIPS_CPUdesign/SingleCycle/ALU.v
-Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
--- Compiling module ALU
-
-Top level modules:
-	ALU
+	MUX2
+	MUX4
 
 } {} {}}
