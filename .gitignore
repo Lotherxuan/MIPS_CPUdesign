@@ -1,1 +1,7 @@
 *.bak
+/SingleCycle/work
+/Pipeline/work
+*.wlf
+*.mpf
+*.mti
+*.vstf
